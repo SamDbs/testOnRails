@@ -10,21 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_09_102555) do
+ActiveRecord::Schema.define(version: 2020_05_09_180301) do
 
   create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.text "summary"
-    t.string "date"
-    t.boolean "read", default: false
+    t.boolean "read"
     t.string "url"
     t.bigint "flux_id"
+    t.string "pub"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["flux_id"], name: "fk_rails_8b04883673"
   end
 
   create_table "fluxes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.string "url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "articles", "fluxes"

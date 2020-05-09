@@ -3,10 +3,11 @@ class CreateArticles < ActiveRecord::Migration[6.0]
     create_table :articles do |t|
       t.string :title
       t.text :summary
-      t.string :date
-      t.boolean :read, :default => false
+      t.boolean :read
       t.string :url
       t.bigint :flux_id
+      t.string :pub
+      t.timestamps
     end
   end
 end
