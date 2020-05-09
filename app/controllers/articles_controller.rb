@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
   def index
 
-    @articles = Article.all
+    articles = Article.all
+    fluxs = Flux.all
     
   end
   def news
@@ -26,10 +27,27 @@ class ArticlesController < ApplicationController
           end
         end
       end
-
+    # On récupère les données de la bdd dans un json :
     articlesJson = Article.all.to_json
-
+    fluxJson = fluxs.to_json
+    logger.debug fluxJson.inspect
     logger.debug articlesJson.inspect
+
+  end
+
+  def new
+
+    flux = Flux.new
+
+  end
+  def create #creer l'enregistrement
+    flux = Flux.create(post_params)
+  end
+
+
+  def post_params  
+
+    params.require(:flux).permit(:title,:url)
   end
   
   
