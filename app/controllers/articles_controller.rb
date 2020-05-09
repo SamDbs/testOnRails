@@ -26,11 +26,10 @@ class ArticlesController < ApplicationController
           end
         end
       end
-    articlesBdd = {}
-    Article.all.each do |key, value|
-      articlesBdd[key] = value
-    end
-    logger.debug articlesBdd.as_json.inspect
+
+    articlesJson = Article.all.to_json
+
+    logger.debug articlesJson.inspect
   end
   
   
