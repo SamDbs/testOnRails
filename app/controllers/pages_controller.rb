@@ -1,6 +1,3 @@
-require 'rss'
-require 'open-uri'
-
 
 class PagesController < ApplicationController
 
