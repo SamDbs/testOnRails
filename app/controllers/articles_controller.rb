@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
     require 'open-uri'
     # logger = Rails.logger
     # logger.debug fluxs.inspect
-    rss = RSS::Parser.parse(open("#{flux.url}").read, false).items[0..5]
+    rss = RSS::Parser.parse(open("#{flux.url}").read, false).items[0..30]
     rss.each do |result|
       a = result.pubDate.strftime("%Y-%m-%d %H:%M:%S")
       if !Article.exists?(pub: a)

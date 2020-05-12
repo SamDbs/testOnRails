@@ -2,10 +2,10 @@ class FluxsController < ApplicationController
   skip_forgery_protection
 
   def read
-    logger = Rails.logger
+    #logger = Rails.logger
     fluxs = Flux.all
     fluxsJson = fluxs.to_json
-    logger.debug fluxsJson.inspect
+    # logger.debug fluxsJson.inspect
     render :json => fluxsJson
     # GET
 
